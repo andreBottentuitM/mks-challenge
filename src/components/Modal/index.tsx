@@ -89,7 +89,7 @@ export const ModalProduct = () => {
       productsCartClone[indexTotalCart].quantityAtCart =
         productModal.quantityAtCart;
 
-        localStorage.setItem('products', JSON.stringify(productsCartClone))
+        localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
       dispatch(setProductsCart([...productsCartClone]));
 
     }
