@@ -2,6 +2,7 @@ import { ProductItem } from "../components/ProductItem";
 import { Sidebar } from "../components/Sidebar";
 import { Product } from "../type";
 import { useEffect } from "react";
+import Head from 'next/head'
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 import * as C from "../styles/home";
@@ -32,9 +33,9 @@ export default function Home() {
 
    const themeAtLocal = localStorage.getItem('theme') ? localStorage.getItem('theme') : themeStatus
    dispatch(setThemeStatus(themeAtLocal));
-/*
-   const productsTotalLocal = localStorage.getItem('products') ? localStorage.getItem('products') : themeStatus
-   dispatch(setThemeStatus(themeAtLocal)); */
+
+   const productsTotalLocal = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products') as string): productsTotal
+   dispatch(setProductsTotal(productsTotalLocal)); 
 
     const gettingDataApi = async () => {
 
@@ -65,6 +66,24 @@ export default function Home() {
 
   return (
     <>
+    <Head>
+    
+<meta name="title" content="MKS Sistemas | E-commerce de dispositivos eletrônicos."/>
+<meta name="description" content="Aqui você encontra os melhores aparelhos eletrônicos pelo melhor preço!"/>
+
+{/*FACEBOOK */}
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://mks-sistemas.netlify.app/"/>
+<meta property="og:title" content="MKS Sistemas | E-commerce de dispositivos eletrônicos."/>
+<meta property="og:description" content="Aqui você encontra os melhores aparelhos eletrônicos pelo melhor preço!"/>
+
+{/*TWITTER */}
+<meta property="twitter:card" content="summary_large_image"/>
+<meta property="twitter:url" content="https://mks-sistemas.netlify.app/"/>
+<meta property="twitter:title" content="MKS Sistemas | E-commerce de dispositivos eletrônicos."/>
+<meta property="twitter:description" content="Aqui você encontra os melhores aparelhos eletrônicos pelo melhor preço!"/>
+
+    </Head>
       {loading && (
         <C.ContainerSkeleton>
           {skeletons.map((item, key) => {

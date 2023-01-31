@@ -1,14 +1,12 @@
 import * as C from "./styles";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useDispatch } from "react-redux";
-import { useEffect} from 'react'
+import Link from 'next/link'
 import { setOpenCart } from "../../redux/reducers/cartReducer";
 import { setThemeStatus } from "../../redux/reducers/themeReducer";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { useAppSelector } from "../../redux/hooks/useAppSelector";
-import { setProductsCart } from "../../redux/reducers/cartReducer";
-import {Product} from "../../type"
 
 export const Layout = ({ children }: any) => {
  
@@ -39,9 +37,11 @@ export const Layout = ({ children }: any) => {
   return (
     <>
       <C.Header scroll={modalStatus} theme={themeStatus}>
+        <Link href={`/`} style={{textDecoration:'none'}}>
         <C.Logo>
-          MKS <span>Sistemas</span>
+          MKS <span> Sistemas</span>
         </C.Logo>
+          </Link>
         <C.ContainerNav>
           <C.ThemeMode theme={themeStatus}>
             <DarkModeIcon

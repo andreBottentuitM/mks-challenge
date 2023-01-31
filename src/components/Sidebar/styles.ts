@@ -58,7 +58,7 @@ color:#ffffff;
 width:100%;
 display:flex;
 justify-content:end;
-margin-right:52px;
+margin-right:30px;
 }
 `
 
@@ -138,7 +138,7 @@ color:#ffffff;
 width:100%;
 display:flex;
 justify-content:end;
-margin-right:40px
+margin-right:25px
 }
 `
 
