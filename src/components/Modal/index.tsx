@@ -108,7 +108,8 @@ export const ModalProduct = () => {
     productsTotalClone[indexTotalProducts].quantityAtCart =
       productModal.quantityAtCart;
     
-    
+      localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
+      dispatch(setProductsCart([...productsCartClone]));
     localStorage.setItem('products', JSON.stringify(productsTotalClone))
     dispatch(setProductsTotal([...productsTotalClone]));
     dispatch(setAlertStatus(true));
