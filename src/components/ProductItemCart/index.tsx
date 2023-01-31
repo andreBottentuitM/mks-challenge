@@ -54,7 +54,7 @@ export const ProductItemCart = ({ product }: Props) => {
     const productsUpdated = productsCartClone.filter((item) => {
       return item.id !== product.id;
     });
-    localStorage.setItem('products', JSON.stringify(productsUpdated))
+    localStorage.setItem('productsCart', JSON.stringify(productsUpdated))
     dispatch(setProductsCart([...productsUpdated]));
   };
 
