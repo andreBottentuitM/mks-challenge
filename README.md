@@ -1,38 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Mks Sistemas E-commerce
+[![NPM](https://img.shields.io/npm/l/react)]((https://github.com/andreBottentuitM/mks-challenge/blob/main/LICENCE)) 
 
-## Getting Started
+# Sobre o projeto
 
-First, run the development server:
+https://mks-sistemas.netlify.app/
+
+Mks Sistemas E-commerce é uma aplicação front-end web construída durante para o desafio da Mks Sistemas.
+
+A aplicação consiste em uma site de e-commerce, que simula um e-commerce de dispositivos eletrônicos. Nesta aplicação podemos incluir itens no carrinho, mudar o tema do site e abrir uma tela modal para verificar informações adicionais dos produtos.
+
+## Layout 
+
+### Home
+<img width="884" alt="image" src="https://user-images.githubusercontent.com/100027700/215896500-545f2410-b563-4aca-818c-32005bf2dac3.png">
+
+### Cart
+<img width="926" alt="image" src="https://user-images.githubusercontent.com/100027700/215896749-6557f93b-b209-4c40-a32a-3e826ff5e29c.png">
+
+### Modal
+<img width="929" alt="image" src="https://user-images.githubusercontent.com/100027700/215896851-db22face-bf9d-48f4-a46e-62660085eee8.png">
+
+
+# Tecnologias utilizadas
+
+## Front end
+- NextJS / Typescript
+- Material UI
+- Styled-components
+- Redux Toolkit
+## Implantação em produção
+- Front end web: Netlify
+
+
+# Como executar o projeto
+
+## Front end web
+Pré-requisitos: npm / yarn
 
 ```bash
+# instalar dependências
+npm install
+
+# executar o projeto
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Autor
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+André Bottentuit de Macedo
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+https://www.linkedin.com/in/andré-bottentuit-de-macedo
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
