@@ -67,7 +67,7 @@ export default function Home() {
   return (
     <>
     <Head>
-    
+    <title>MKS Sistemas | E-commerce de dispositivos eletrônicos.</title>
 <meta name="title" content="MKS Sistemas | E-commerce de dispositivos eletrônicos."/>
 <meta name="description" content="Aqui você encontra os melhores aparelhos eletrônicos pelo melhor preço!"/>
 
