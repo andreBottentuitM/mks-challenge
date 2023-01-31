@@ -1,78 +1,52 @@
-# Big Game Survey 
+# Mks Sistemas E-commerce
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/devsuperior/sds1-wmazoni/blob/master/LICENSE) 
 
 # Sobre o projeto
 
-https://wmazoni-sds1.netlify.app
+https://mks-sistemas.netlify.app/
 
-Big Game Survey é uma aplicação full stack web e mobile construída durante a 1ª edição da **Semana DevSuperior** (#sds1), evento organizado pela [DevSuperior](https://devsuperior.com "Site da DevSuperior").
+Mks Sistemas E-commerce é uma aplicação front-end web construída durante para o desafio da Mks Sistemas.
 
-A aplicação consiste em uma pesquisa de preferência de games, onde os dados são coletados no app mobile, e depois são listados no app web, que também apresenta um dashboard com gráficos baseados nestes dados.
+A aplicação consiste em uma site de e-commerce, que simula um e-commerce de dispositivos eletrônicos. Nesta aplicação podemos incluir itens no carrinho, mudar o tema do site e abrir uma tela modal para verificar informações adicionais dos produtos.
 
-## Layout mobile
-![Mobile 1](https://github.com/acenelio/assets/raw/main/sds1/mobile1.png) ![Mobile 2](https://github.com/acenelio/assets/raw/main/sds1/mobile2.png)
+## Layout 
 
-## Layout web
-![Web 1](https://github.com/acenelio/assets/raw/main/sds1/web1.png)
+### Home
+<img width="884" alt="image" src="https://user-images.githubusercontent.com/100027700/215896500-545f2410-b563-4aca-818c-32005bf2dac3.png">
 
-![Web 2](https://github.com/acenelio/assets/raw/main/sds1/web2.png)
+### Cart
+<img width="926" alt="image" src="https://user-images.githubusercontent.com/100027700/215896749-6557f93b-b209-4c40-a32a-3e826ff5e29c.png">
 
-## Modelo conceitual
-![Modelo Conceitual](https://github.com/acenelio/assets/raw/main/sds1/modelo-conceitual.png)
+### Modal
+<img width="929" alt="image" src="https://user-images.githubusercontent.com/100027700/215896851-db22face-bf9d-48f4-a46e-62660085eee8.png">
+
 
 # Tecnologias utilizadas
-## Back end
-- Java
-- Spring Boot
-- JPA / Hibernate
-- Maven
+
 ## Front end
-- HTML / CSS / JS / TypeScript
-- ReactJS
-- React Native
-- Apex Charts
-- Expo
+- NextJS / Typescript
+- Material UI
+- Styled-components
 ## Implantação em produção
-- Back end: Heroku
 - Front end web: Netlify
-- Banco de dados: Postgresql
+
 
 # Como executar o projeto
-
-## Back end
-Pré-requisitos: Java 11
-
-```bash
-# clonar repositório
-git clone https://github.com/devsuperior/sds1-wmazoni
-
-# entrar na pasta do projeto back end
-cd backend
-
-# executar o projeto
-./mvnw spring-boot:run
-```
 
 ## Front end web
 Pré-requisitos: npm / yarn
 
 ```bash
-# clonar repositório
-git clone https://github.com/devsuperior/sds1-wmazoni
-
-# entrar na pasta do projeto front end web
-cd front-web
-
 # instalar dependências
-yarn install
+npm install
 
 # executar o projeto
-yarn start
+npm run dev
 ```
 
 # Autor
 
-Wellington Mazoni de Andrade
+André Bottentuit de Macedo
 
-https://www.linkedin.com/in/wmazoni
+https://www.linkedin.com/in/andré-bottentuit-de-macedo
 
