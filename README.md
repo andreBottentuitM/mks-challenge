@@ -27,6 +27,7 @@ A aplicação consiste em uma site de e-commerce, que simula um e-commerce de di
 - NextJS / Typescript
 - Material UI
 - Styled-components
+- Redux Toolkit
 ## Implantação em produção
 - Front end web: Netlify
 
