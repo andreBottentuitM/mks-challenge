@@ -147,7 +147,7 @@ export const ProductItemCart = ({ product }: Props) => {
               </C.PlusMobile>
             </C.ContainerQuantitatyMobile>
             <C.ValueMobile theme={theme}>
-              {parseFloat(product?.price).toFixed(0)}
+              {`R$${parseFloat(product?.price).toFixed(0)}`}
             </C.ValueMobile>
           </C.ContainerValue>
           <CloseTwoToneIcon
