@@ -97,7 +97,7 @@ cursor:pointer;
 }
 `
 
-export const ContainerImage = styled.div<{hover:any, theme:string}>`
+export const ContainerImage = styled.div<{hover:boolean, theme:string}>`
     font-size:30px;
     width:25px;
     position:relative;
@@ -113,6 +113,7 @@ export const ContainerImage = styled.div<{hover:any, theme:string}>`
         font-size:37px;
         bottom:275px;
     left:215px;
+    opacity:0
     }
 
 `
