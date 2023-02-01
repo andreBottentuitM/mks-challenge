@@ -76,8 +76,8 @@ console.log(product)
       const index = productsCartClone.indexOf(product);
       productsTotalClone[indexTotal] = cloneProduct;
       productsCartClone[index] = cloneProduct;
-    //  localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
-    //  localStorage.setItem('products', JSON.stringify(productsTotalClone))
+      localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
+      localStorage.setItem('products', JSON.stringify(productsTotalClone))
       dispatch(setProductsCart([...productsCartClone]));
       dispatch(setProductsTotal([...productsTotalClone]));
     }

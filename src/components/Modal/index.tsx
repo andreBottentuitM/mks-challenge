@@ -73,7 +73,7 @@ export const ModalProduct = () => {
     if (!validate) {
       productsCartClone.push(productModal);
 
-   //   localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
+      localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
       dispatch(setProductsCart(productsCartClone));
     } else {
       
@@ -87,43 +87,30 @@ export const ModalProduct = () => {
         }else{
           cloneCart.push(item)
         }
-        
       }
       );
       
-     
-   
       
-      let indexTotalProducts = 0;
+      let cloneProducts: Product[] = [];
     productsTotalClone.forEach((item, index) => {
       if (item.id === productModal.id) {
-        indexTotalProducts = index;
+        let cloneItem = {...item}
+        cloneItem.quantityAtCart = productModal.quantityAtCart
+        cloneProducts.push(cloneItem)
+      }else{
+        cloneProducts.push(item)
       }
     });
-     /* 
-      productsCartClone[indexTotalCart] = {
-        ...productsCartClone[indexTotalCart],
-      };
-      productsCartClone[indexTotalCart].quantityAtCart =
-        productModal.quantityAtCart;
-*/
-        productsTotalClone[indexTotalProducts] = {
-          ...productsTotalClone[indexTotalProducts],
-        };
-        productsTotalClone[indexTotalProducts].quantityAtCart =
-          productModal.quantityAtCart;
+
+       
         
-//localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
+localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
       dispatch(setProductsCart([...cloneCart]));
-   //   localStorage.setItem('products', JSON.stringify(productsTotalClone))
-      dispatch(setProductsTotal([...productsTotalClone]));
+      localStorage.setItem('products', JSON.stringify(productsTotalClone))
+      dispatch(setProductsTotal([...cloneProducts]));
 
     }
 
-    
-
-    
-    
     dispatch(setAlertStatus(true));
     dispatch(setAlertText("Produto adicionado!"));
     handleClose()

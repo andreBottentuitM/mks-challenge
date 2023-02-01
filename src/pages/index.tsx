@@ -27,7 +27,7 @@ export default function Home() {
   const productsTotal: Products = useAppSelector((state) => state.products.productsTotal);
 
   useEffect(() => {
-/*
+
    const productsAtCartLocal = localStorage.getItem('productsCart') ? JSON.parse(localStorage.getItem('productsCart') as string) : productsCart 
    dispatch(setProductsCart(productsAtCartLocal));
 
@@ -36,7 +36,7 @@ export default function Home() {
 
    const productsTotalLocal = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products') as string): productsTotal
    dispatch(setProductsTotal(productsTotalLocal)); 
-*/
+
     const gettingDataApi = async () => {
 
       const MKS_API =
