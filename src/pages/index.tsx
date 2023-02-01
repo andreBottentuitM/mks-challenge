@@ -1,4 +1,4 @@
-import { ProductItem } from "../components/ProductItem";
+import { ProductItem } from "../components/Products";
 import { Sidebar } from "../components/Sidebar";
 import { Product } from "../type";
 import { useEffect } from "react";

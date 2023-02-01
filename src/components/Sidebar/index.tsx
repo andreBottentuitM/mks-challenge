@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CloseTwoToneIcon from "@mui/icons-material/CloseTwoTone";
-import { ProductItemCart } from "../ProductItemCart/index";
+import { ProductItemCart } from "../ProductsAtCart/index";
 import { Product } from "../../type";
 import * as C from "./styles";
 import { useAppSelector } from "../../redux/hooks/useAppSelector";
