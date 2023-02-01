@@ -16,7 +16,7 @@ type Props = {
 export const ProductItemCart = ({ product }: Props) => {
   
   const dispatch = useDispatch();
-
+console.log(product)
   const productsCart = useAppSelector((state) => state.openCart.products);
   const theme = useAppSelector((state) => state.theme.status);
   const productsTotalCart = useAppSelector((state) => state.products.productsTotal);
@@ -42,8 +42,8 @@ export const ProductItemCart = ({ product }: Props) => {
 
       productsTotalClone[indexTotal] = cloneProduct;
       productsCartClone[index] = cloneProduct;
-      localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
-      localStorage.setItem('products', JSON.stringify(productsTotalClone))
+    //  localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
+   //   localStorage.setItem('products', JSON.stringify(productsTotalClone))
       dispatch(setProductsCart([...productsCartClone]));
       dispatch(setProductsTotal([...productsTotalClone]));
     }
@@ -54,7 +54,7 @@ export const ProductItemCart = ({ product }: Props) => {
     const productsUpdated = productsCartClone.filter((item) => {
       return item.id !== product.id;
     });
-    localStorage.setItem('productsCart', JSON.stringify(productsUpdated))
+   // localStorage.setItem('productsCart', JSON.stringify(productsUpdated))
     dispatch(setProductsCart([...productsUpdated]));
   };
 
@@ -76,8 +76,8 @@ export const ProductItemCart = ({ product }: Props) => {
       const index = productsCartClone.indexOf(product);
       productsTotalClone[indexTotal] = cloneProduct;
       productsCartClone[index] = cloneProduct;
-      localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
-      localStorage.setItem('products', JSON.stringify(productsTotalClone))
+    //  localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
+    //  localStorage.setItem('products', JSON.stringify(productsTotalClone))
       dispatch(setProductsCart([...productsCartClone]));
       dispatch(setProductsTotal([...productsTotalClone]));
     }

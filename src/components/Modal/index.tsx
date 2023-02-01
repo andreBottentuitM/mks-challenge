@@ -73,45 +73,57 @@ export const ModalProduct = () => {
     if (!validate) {
       productsCartClone.push(productModal);
 
-      localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
+   //   localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
       dispatch(setProductsCart(productsCartClone));
     } else {
-      let indexTotalCart = 0;
+      
+
+      let cloneCart:Product[] = [];
       productsCartClone.forEach((item, index) => {
         if (item.id === productModal.id) {
-          indexTotalCart == index;
+          let cloneItem = {...item}
+          cloneItem.quantityAtCart = productModal.quantityAtCart
+          cloneCart.push(cloneItem)
+        }else{
+          cloneCart.push(item)
         }
-      });
-    
+        
+      }
+      );
+      
+     
+   
+      
+      let indexTotalProducts = 0;
+    productsTotalClone.forEach((item, index) => {
+      if (item.id === productModal.id) {
+        indexTotalProducts = index;
+      }
+    });
+     /* 
       productsCartClone[indexTotalCart] = {
         ...productsCartClone[indexTotalCart],
       };
       productsCartClone[indexTotalCart].quantityAtCart =
         productModal.quantityAtCart;
-
-        localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
-      dispatch(setProductsCart([...productsCartClone]));
+*/
+        productsTotalClone[indexTotalProducts] = {
+          ...productsTotalClone[indexTotalProducts],
+        };
+        productsTotalClone[indexTotalProducts].quantityAtCart =
+          productModal.quantityAtCart;
+        
+//localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
+      dispatch(setProductsCart([...cloneCart]));
+   //   localStorage.setItem('products', JSON.stringify(productsTotalClone))
+      dispatch(setProductsTotal([...productsTotalClone]));
 
     }
 
-    let indexTotalProducts = 0;
-    productsTotalClone.forEach((item, index) => {
-      if (item.id === productModal.id) {
-        console.log(index);
-        indexTotalProducts = index;
-      }
-    });
-
-    productsTotalClone[indexTotalProducts] = {
-      ...productsTotalClone[indexTotalProducts],
-    };
-    productsTotalClone[indexTotalProducts].quantityAtCart =
-      productModal.quantityAtCart;
     
-      localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
-      dispatch(setProductsCart([...productsCartClone]));
-    localStorage.setItem('products', JSON.stringify(productsTotalClone))
-    dispatch(setProductsTotal([...productsTotalClone]));
+
+    
+    
     dispatch(setAlertStatus(true));
     dispatch(setAlertText("Produto adicionado!"));
     handleClose()
