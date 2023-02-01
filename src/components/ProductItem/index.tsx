@@ -14,15 +14,13 @@ import {
 import { setModalStatus } from "../../redux/reducers/modalReducer";
 import { useAppSelector } from "../../redux/hooks/useAppSelector";
 import Box from "@mui/material/Box";
-import {setCookie} from 'nookies'
-
 
 interface Props {
   products: Product;
 }
 
 export const ProductItem = (item: Props) => {
-  const { products } = item
+  const { products } = item;
 
   const [hoverState, setHoverState] = useState(false);
 
@@ -42,10 +40,9 @@ export const ProductItem = (item: Props) => {
 
     if (!validationAddCart) {
       productCartClone.push(productClone);
-      localStorage.setItem('productsCart', JSON.stringify(productCartClone))
+      localStorage.setItem("productsCart", JSON.stringify(productCartClone));
       dispatch(setProductsCart(productCartClone));
-      
-      
+
       dispatch(setAlertStatus(true));
       dispatch(setAlertText("Produto adicionado!"));
     } else {

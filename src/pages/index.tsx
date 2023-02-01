@@ -2,7 +2,7 @@ import { ProductItem } from "../components/ProductItem";
 import { Sidebar } from "../components/Sidebar";
 import { Product } from "../type";
 import { useEffect } from "react";
-import Head from 'next/head'
+import Head from "next/head";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 import * as C from "../styles/home";
@@ -11,8 +11,8 @@ import { setLoadingStatus } from "../redux/reducers/loadingReducer";
 import { ModalProduct } from "../components/Modal";
 import { setAlertStatus, setAlertText } from "../redux/reducers/alertReducer";
 import { setProductsTotal } from "../redux/reducers/productsReducer";
-import {setProductsCart} from '../redux/reducers/cartReducer'
-import {setThemeStatus} from '../redux/reducers/themeReducer'
+import { setProductsCart } from "../redux/reducers/cartReducer";
+import { setThemeStatus } from "../redux/reducers/themeReducer";
 import { useAppSelector } from "../redux/hooks/useAppSelector";
 
 type Products = Product[];
@@ -23,26 +23,26 @@ export default function Home() {
   const productsCart = useAppSelector((state) => state.openCart.products);
   const loading = useAppSelector((state) => state.loading.status);
   const themeStatus = useAppSelector((state) => state.theme.status);
-  
-  const productsTotal: Products = useAppSelector((state) => state.products.productsTotal);
+  const productsTotal: Products = useAppSelector(
+    (state) => state.products.productsTotal
+  );
 
   useEffect(() => {
+    const productsAtCartLocal = localStorage.getItem("productsCart")
+      ? JSON.parse(localStorage.getItem("productsCart") as string)
+      : productsCart;
+    dispatch(setProductsCart(productsAtCartLocal));
 
-   const productsAtCartLocal = localStorage.getItem('productsCart') ? JSON.parse(localStorage.getItem('productsCart') as string) : productsCart 
-   dispatch(setProductsCart(productsAtCartLocal));
-
-   const themeAtLocal = localStorage.getItem('theme') ? localStorage.getItem('theme') : themeStatus
-   dispatch(setThemeStatus(themeAtLocal));
-
-   const productsTotalLocal = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products') as string): productsTotal
-   dispatch(setProductsTotal(productsTotalLocal)); 
+    const themeAtLocal = localStorage.getItem("theme")
+      ? localStorage.getItem("theme")
+      : themeStatus;
+    dispatch(setThemeStatus(themeAtLocal));
 
     const gettingDataApi = async () => {
-
       const MKS_API =
         "https://mks-challenge-api-frontend.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=DESC";
-    
-        try {
+
+      try {
         const gettingDatas = await fetch(MKS_API);
         const datas = await gettingDatas.json();
 
@@ -66,24 +66,44 @@ export default function Home() {
 
   return (
     <>
-    <Head>
-    <title>MKS Sistemas | E-commerce de dispositivos eletrônicos.</title>
-<meta name="title" content="MKS Sistemas | E-commerce de dispositivos eletrônicos."/>
-<meta name="description" content="Aqui você encontra os melhores aparelhos eletrônicos pelo melhor preço!"/>
+      <Head>
+        <title>MKS Sistemas | E-commerce de dispositivos eletrônicos.</title>
+        <meta
+          name="title"
+          content="MKS Sistemas | E-commerce de dispositivos eletrônicos."
+        />
+        <meta
+          name="description"
+          content="Aqui você encontra os melhores aparelhos eletrônicos pelo melhor preço!"
+        />
 
-{/*FACEBOOK */}
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://mks-sistemas.netlify.app/"/>
-<meta property="og:title" content="MKS Sistemas | E-commerce de dispositivos eletrônicos."/>
-<meta property="og:description" content="Aqui você encontra os melhores aparelhos eletrônicos pelo melhor preço!"/>
+        {/*FACEBOOK */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://mks-sistemas.netlify.app/" />
+        <meta
+          property="og:title"
+          content="MKS Sistemas | E-commerce de dispositivos eletrônicos."
+        />
+        <meta
+          property="og:description"
+          content="Aqui você encontra os melhores aparelhos eletrônicos pelo melhor preço!"
+        />
 
-{/*TWITTER */}
-<meta property="twitter:card" content="summary_large_image"/>
-<meta property="twitter:url" content="https://mks-sistemas.netlify.app/"/>
-<meta property="twitter:title" content="MKS Sistemas | E-commerce de dispositivos eletrônicos."/>
-<meta property="twitter:description" content="Aqui você encontra os melhores aparelhos eletrônicos pelo melhor preço!"/>
-
-    </Head>
+        {/*TWITTER */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:url"
+          content="https://mks-sistemas.netlify.app/"
+        />
+        <meta
+          property="twitter:title"
+          content="MKS Sistemas | E-commerce de dispositivos eletrônicos."
+        />
+        <meta
+          property="twitter:description"
+          content="Aqui você encontra os melhores aparelhos eletrônicos pelo melhor preço!"
+        />
+      </Head>
       {loading && (
         <C.ContainerSkeleton>
           {skeletons.map((item, key) => {

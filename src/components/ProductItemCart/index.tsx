@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useAppSelector } from "../../redux/hooks/useAppSelector";
 import { useDispatch } from "react-redux";
 import { setProductsCart } from "../../redux/reducers/cartReducer";
-import { setProductsTotal } from "../../redux/reducers/productsReducer";
 import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
 
@@ -14,25 +13,14 @@ type Props = {
 };
 
 export const ProductItemCart = ({ product }: Props) => {
-  
   const dispatch = useDispatch();
-console.log(product)
+
   const productsCart = useAppSelector((state) => state.openCart.products);
   const theme = useAppSelector((state) => state.theme.status);
-  const productsTotalCart = useAppSelector((state) => state.products.productsTotal);
 
   const handlePlusQuantity = () => {
     if (product.quantityAtCart !== 10) {
-      const productsTotalClone: Product[] = [...productsTotalCart];
       let cloneProduct = { ...product };
-
-      let indexTotal = 0;
-
-      productsTotalClone.forEach((item, index) => {
-        if (item.id === cloneProduct.id) {
-          indexTotal = index;
-        }
-      });
 
       cloneProduct.quantityAtCart = cloneProduct.quantityAtCart + 1;
 
@@ -40,12 +28,9 @@ console.log(product)
 
       const index = productsCartClone.indexOf(product);
 
-      productsTotalClone[indexTotal] = cloneProduct;
       productsCartClone[index] = cloneProduct;
-    //  localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
-   //   localStorage.setItem('products', JSON.stringify(productsTotalClone))
+      localStorage.setItem("productsCart", JSON.stringify(productsCartClone));
       dispatch(setProductsCart([...productsCartClone]));
-      dispatch(setProductsTotal([...productsTotalClone]));
     }
   };
 
@@ -54,32 +39,24 @@ console.log(product)
     const productsUpdated = productsCartClone.filter((item) => {
       return item.id !== product.id;
     });
-   // localStorage.setItem('productsCart', JSON.stringify(productsUpdated))
+    localStorage.setItem("productsCart", JSON.stringify(productsUpdated));
     dispatch(setProductsCart([...productsUpdated]));
   };
 
   const handleMinusQuantity = () => {
     if (product.quantityAtCart !== 1) {
-      const productsTotalClone: Product[] = [...productsTotalCart];
       let cloneProduct = { ...product };
-      let indexTotal = 0;
-      productsTotalClone.forEach((item, index) => {
-        if (item.id === cloneProduct.id) {
-          indexTotal = index;
-        }
-      });
 
       const productsCartClone: Product[] = [...productsCart];
 
       cloneProduct.quantityAtCart = cloneProduct.quantityAtCart - 1;
 
       const index = productsCartClone.indexOf(product);
-      productsTotalClone[indexTotal] = cloneProduct;
+
       productsCartClone[index] = cloneProduct;
-      localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
-      localStorage.setItem('products', JSON.stringify(productsTotalClone))
+
+      localStorage.setItem("productsCart", JSON.stringify(productsCartClone));
       dispatch(setProductsCart([...productsCartClone]));
-      dispatch(setProductsTotal([...productsTotalClone]));
     }
   };
 

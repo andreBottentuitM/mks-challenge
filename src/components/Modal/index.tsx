@@ -6,16 +6,19 @@ import CloseTwoToneIcon from "@mui/icons-material/CloseTwoTone";
 import Image from "next/image";
 import { Product } from "../../type";
 import { setProductsCart } from "../../redux/reducers/cartReducer";
-import { setProductsTotal } from "../../redux/reducers/productsReducer";
-import {setModalStatus,setProductModal} from "../../redux/reducers/modalReducer";
-import {setAlertStatus , setAlertText} from '../../redux/reducers/alertReducer'
+import {
+  setModalStatus,
+  setProductModal,
+} from "../../redux/reducers/modalReducer";
+import {
+  setAlertStatus,
+  setAlertText,
+} from "../../redux/reducers/alertReducer";
 import { useAppSelector } from "../../redux/hooks/useAppSelector";
 import { useDispatch } from "react-redux";
 import Modal from "@mui/material/Modal";
 
-
 export const ModalProduct = () => {
-
   const dispatch = useDispatch();
 
   const theme = useAppSelector((state) => state.theme.status);
@@ -30,7 +33,7 @@ export const ModalProduct = () => {
     transform: "translate(-50%, -50%)",
     display: { md: "block", xs: "none" },
     width: { md: 880 },
-    bgcolor: `${theme === 'light' ? '#1a1a1a' : "background.paper"}` ,
+    bgcolor: `${theme === "light" ? "#1a1a1a" : "background.paper"}`,
     border: "white",
     boxShadow: 24,
     p: 4,
@@ -38,10 +41,6 @@ export const ModalProduct = () => {
 
   const productsCart: Product[] = useAppSelector(
     (state) => state.openCart.products
-  );
-  
-  const productsTotal: Product[] = useAppSelector(
-    (state) => state.products.productsTotal
   );
 
   const handleClose = () => dispatch(setModalStatus(false));
@@ -68,52 +67,31 @@ export const ModalProduct = () => {
     });
 
     const productsCartClone = [...productsCart];
-    const productsTotalClone = [...productsTotal];
 
     if (!validate) {
       productsCartClone.push(productModal);
 
-      localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
+      localStorage.setItem("productsCart", JSON.stringify(productsCartClone));
       dispatch(setProductsCart(productsCartClone));
     } else {
-      
-
-      let cloneCart:Product[] = [];
+      let cloneCart: Product[] = [];
       productsCartClone.forEach((item, index) => {
         if (item.id === productModal.id) {
-          let cloneItem = {...item}
-          cloneItem.quantityAtCart = productModal.quantityAtCart
-          cloneCart.push(cloneItem)
-        }else{
-          cloneCart.push(item)
+          let cloneItem = { ...item };
+          cloneItem.quantityAtCart = productModal.quantityAtCart;
+          cloneCart.push(cloneItem);
+        } else {
+          cloneCart.push(item);
         }
-      }
-      );
-      
-      
-      let cloneProducts: Product[] = [];
-    productsTotalClone.forEach((item, index) => {
-      if (item.id === productModal.id) {
-        let cloneItem = {...item}
-        cloneItem.quantityAtCart = productModal.quantityAtCart
-        cloneProducts.push(cloneItem)
-      }else{
-        cloneProducts.push(item)
-      }
-    });
+      });
 
-       
-        
-localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
+      localStorage.setItem("productsCart", JSON.stringify(productsCartClone));
       dispatch(setProductsCart([...cloneCart]));
-      localStorage.setItem('products', JSON.stringify(productsTotalClone))
-      dispatch(setProductsTotal([...cloneProducts]));
-
     }
 
     dispatch(setAlertStatus(true));
     dispatch(setAlertText("Produto adicionado!"));
-    handleClose()
+    handleClose();
   };
 
   return (
@@ -128,9 +106,8 @@ localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
         <Box sx={style}>
           <C.Container theme={theme}>
             <C.ContainerImage>
-           
               <Image
-              priority
+                priority
                 src={productModal.photo}
                 alt={productModal.name}
                 width={350}
@@ -159,11 +136,17 @@ localStorage.setItem('productsCart', JSON.stringify(productsCartClone))
               <Divider sx={{ marginBottom: "10px" }} />
               <C.ContainerPurchase>
                 <C.ContainerQuantity theme={theme}>
-                  <C.Minus theme={theme} onClick={handleMinusQuantity}>-</C.Minus>
+                  <C.Minus theme={theme} onClick={handleMinusQuantity}>
+                    -
+                  </C.Minus>
                   <C.Quantity>{productModal.quantityAtCart}</C.Quantity>
-                  <C.Plus theme={theme} onClick={handlePlusQuantity}>+</C.Plus>
+                  <C.Plus theme={theme} onClick={handlePlusQuantity}>
+                    +
+                  </C.Plus>
                 </C.ContainerQuantity>
-                <C.Purchase theme={theme} onClick={handlePurchase}>COMPRAR</C.Purchase>
+                <C.Purchase theme={theme} onClick={handlePurchase}>
+                  COMPRAR
+                </C.Purchase>
               </C.ContainerPurchase>
             </C.ContainerContent>
           </C.Container>
