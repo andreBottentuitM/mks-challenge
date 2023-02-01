@@ -63,7 +63,7 @@ export const AlertToast = () => {
           </Snackbar>
         </Stack>
       )}
-      {text === "Error: Conecte-se à internet!" && (
+      {text === "Error: Conexão não estabelecida!" && (
         <Stack spacing={2} sx={{ width: "100%" }}>
           <Snackbar
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
