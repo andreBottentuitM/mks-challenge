@@ -95,6 +95,7 @@ border-radius:8px;
 font-weight:bolder;
 transition: all 0.5s ease 0s;
 cursor:pointer;
+font-family:'Montserrat', sans-serif;
 
 &:hover{
     background-color:${props => props.theme === 'light' ? '#6ee5b6': '#396dba'};
