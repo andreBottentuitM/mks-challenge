@@ -34,7 +34,7 @@ export const ProductItem = (item: Props) => {
 
     let productClone = { ...products };
 
-    let validationAddCart = productCartClone.some((item: Product) => {
+    let validationAddCart = productCartClone.some((item) => {
       return item.id === products.id;
     });
 

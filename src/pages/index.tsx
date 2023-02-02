@@ -15,15 +15,21 @@ import { setProductsCart } from "../redux/reducers/cartReducer";
 import { setThemeStatus } from "../redux/reducers/themeReducer";
 import { useAppSelector } from "../redux/hooks/useAppSelector";
 
-type Products = Product[];
+type Props = {
+  products: { products: Product[] };
+  loadingSkeleton?: boolean;
+};
+type Products = {
+  products: Product[];
+};
 
-export default function Home() {
+export default function Home(props: Props) {
   const dispatch = useDispatch();
 
   const productsCart = useAppSelector((state) => state.openCart.products);
   const loading = useAppSelector((state) => state.loading.status);
   const themeStatus = useAppSelector((state) => state.theme.status);
-  const productsTotal: Products = useAppSelector(
+  const productsTotal: any = useAppSelector(
     (state) => state.products.productsTotal
   );
 
@@ -38,22 +44,11 @@ export default function Home() {
       : themeStatus;
     dispatch(setThemeStatus(themeAtLocal));
 
-    const gettingDataApi = async () => {
-      const MKS_API =
-        "https://mks-challenge-api-frontend.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=DESC";
+    const gettingDataApi = () => {
+      dispatch(setProductsTotal(props.products.products));
+      dispatch(setLoadingStatus(props.loadingSkeleton));
 
-      try {
-        const gettingDatas = await fetch(MKS_API);
-        const datas = await gettingDatas.json();
-
-        dispatch(setLoadingStatus(false));
-
-        datas.products.map((item: Product) => {
-          item.quantityAtCart = 1;
-        });
-
-        dispatch(setProductsTotal([...datas.products]));
-      } catch (e) {
+      if (props.loadingSkeleton) {
         dispatch(setAlertStatus(true));
         dispatch(setAlertText("Error: Conexão não estabelecida!"));
       }
@@ -150,3 +145,25 @@ export default function Home() {
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  try {
+    const MKS_API =
+      "https://mks-challenge-api-frontend.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=DESC";
+    const gettingDatas = await fetch(MKS_API);
+    const datas = await gettingDatas.json();
+
+    datas.products.map((item: Product) => {
+      item.quantityAtCart = 1;
+    });
+    return {
+      props: {
+        loadingSkeleton: false,
+        products: datas,
+      },
+    };
+  } catch (e) {
+ 
+  }
+};
+
