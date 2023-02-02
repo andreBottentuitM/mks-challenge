@@ -27,7 +27,7 @@ export default function Home(props: Props) {
   const productsCart = useAppSelector((state) => state.openCart.products);
   const loading = useAppSelector((state) => state.loading.status);
   const themeStatus = useAppSelector((state) => state.theme.status);
-  const productsTotal: any = useAppSelector(
+  const productsTotal = useAppSelector(
     (state) => state.products.productsTotal
   );
 
