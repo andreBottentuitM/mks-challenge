@@ -45,13 +45,16 @@ export default function Home(props: Props) {
     dispatch(setThemeStatus(themeAtLocal));
 
     const gettingDataApi = () => {
-      dispatch(setProductsTotal(props.products.products));
-      dispatch(setLoadingStatus(props.loadingSkeleton));
-
-      if (props.loadingSkeleton) {
+      try{
+        dispatch(setProductsTotal(props.products.products));
+        dispatch(setLoadingStatus(props.loadingSkeleton));
+      }catch(e){
         dispatch(setAlertStatus(true));
         dispatch(setAlertText("Error: Conexão não estabelecida!"));
       }
+      
+
+     
     };
 
     gettingDataApi();
@@ -163,7 +166,12 @@ export const getStaticProps = async () => {
       },
     };
   } catch (e) {
- 
+    return {
+      props: {
+        loadingSkeleton: true,
+        alert: true,
+      },
+    };
   }
 };
 
