@@ -19,9 +19,7 @@ type Props = {
   products: { products: Product[] };
   loadingSkeleton?: boolean;
 };
-type Products = {
-  products: Product[];
-};
+
 
 export default function Home(props: Props) {
   const dispatch = useDispatch();
@@ -45,16 +43,13 @@ export default function Home(props: Props) {
     dispatch(setThemeStatus(themeAtLocal));
 
     const gettingDataApi = () => {
-      try{
+      try {
         dispatch(setProductsTotal(props.products.products));
         dispatch(setLoadingStatus(props.loadingSkeleton));
-      }catch(e){
+      } catch (e) {
         dispatch(setAlertStatus(true));
         dispatch(setAlertText("Error: Conexão não estabelecida!"));
       }
-      
-
-     
     };
 
     gettingDataApi();
@@ -174,4 +169,3 @@ export const getStaticProps = async () => {
     };
   }
 };
-
