@@ -154,6 +154,7 @@ export const getStaticProps = async () => {
     datas.products.map((item: Product) => {
       item.quantityAtCart = 1;
     });
+
     return {
       props: {
         loadingSkeleton: false,

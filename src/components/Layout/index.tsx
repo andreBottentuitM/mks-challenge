@@ -7,8 +7,13 @@ import { setThemeStatus } from "../../redux/reducers/themeReducer";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { useAppSelector } from "../../redux/hooks/useAppSelector";
+import { ReactElement } from "react";
 
-export const Layout = ({ children }: any) => {
+type Props = {
+  children: ReactElement
+}
+
+export const Layout = ({ children }: Props) => {
  
   
   const dispatch = useDispatch(); 
